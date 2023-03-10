@@ -1,0 +1,21 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/created-by: application-service
+    app.kubernetes.io/instance: storage-apicurio-registry-mopv
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/name: storage-apicurio-registry-mopv
+    app.kubernetes.io/part-of: my-app
+  name: storage-apicurio-registry-mopv
+  namespace: munahaf-tenant
+spec:
+  path: /
+  port:
+    targetPort: 8081
+  to:
+    kind: Service
+    name: storage-apicurio-registry-mopv
+    weight: null
+status: {}
