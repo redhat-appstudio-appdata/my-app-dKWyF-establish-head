@@ -1,0 +1,21 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/created-by: application-service
+    app.kubernetes.io/instance: docs-apicurio-registry-kd5b
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/name: docs-apicurio-registry-kd5b
+    app.kubernetes.io/part-of: my-app
+  name: docs-apicurio-registry-kd5b
+  namespace: munahaf-tenant
+spec:
+  path: /
+  port:
+    targetPort: 8081
+  to:
+    kind: Service
+    name: docs-apicurio-registry-kd5b
+    weight: null
+status: {}
