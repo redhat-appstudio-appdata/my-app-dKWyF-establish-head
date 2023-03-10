@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/created-by: application-service
+    app.kubernetes.io/instance: common-apicurio-registry-bgwz
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/name: common-apicurio-registry-bgwz
+    app.kubernetes.io/part-of: my-app
+  name: common-apicurio-registry-bgwz
+  namespace: munahaf-tenant
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: java-quarkus-app
+      app.kubernetes.io/instance: common-apicurio-registry-bgwz
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: java-quarkus-app
+        app.kubernetes.io/instance: common-apicurio-registry-bgwz
+    spec:
+      containers:
+      - image: quay.io/redhat-appstudio/user-workload:dKWyF-common-apicurio-registry-bgwz
+        name: my-java-quarkus
+        ports:
+        - containerPort: 8081
+          name: http
+          protocol: TCP
+        resources:
+          limits:
+            cpu: 100m
+            memory: 250Mi
+          requests:
+            cpu: 10m
+            memory: 100Mi
+status: {}
