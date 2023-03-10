@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/created-by: application-service
+    app.kubernetes.io/instance: system-tests-apicurio-registry-legc
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/name: system-tests-apicurio-registry-legc
+    app.kubernetes.io/part-of: my-app
+  name: system-tests-apicurio-registry-legc
+  namespace: munahaf-tenant
+spec:
+  ports:
+  - port: 8081
+    targetPort: 8081
+  selector:
+    app.kubernetes.io/instance: system-tests-apicurio-registry-legc
+status:
+  loadBalancer: {}

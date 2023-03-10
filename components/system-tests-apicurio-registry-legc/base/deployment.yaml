@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/created-by: application-service
+    app.kubernetes.io/instance: system-tests-apicurio-registry-legc
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/name: system-tests-apicurio-registry-legc
+    app.kubernetes.io/part-of: my-app
+  name: system-tests-apicurio-registry-legc
+  namespace: munahaf-tenant
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: java-quarkus-app
+      app.kubernetes.io/instance: system-tests-apicurio-registry-legc
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: java-quarkus-app
+        app.kubernetes.io/instance: system-tests-apicurio-registry-legc
+    spec:
+      containers:
+      - image: quay.io/redhat-appstudio/user-workload:dKWyF-system-tests-apicurio-registry-legc
+        name: my-java-quarkus
+        ports:
+        - containerPort: 8081
+          name: http
+          protocol: TCP
+        resources:
+          limits:
+            cpu: 100m
+            memory: 250Mi
+          requests:
+            cpu: 10m
+            memory: 100Mi
+status: {}
